@@ -175,6 +175,15 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Configure netrw
+vim.g.netrw_banner = 0 -- Disable banner
+vim.g.netrw_browse_split = 4 -- Open in previous window
+vim.g.netrw_altv = 1 -- Open splits to the right
+vim.g.netrw_liststyle = 3 -- Tree view
+vim.g.netrw_winsize = 25 -- Should be about 25%
+vim.g.netrw_list_hide = vim.fn['netrw_gitignore#Hide']() .. [[.git/]] -- See see `:help netrw-gitignore`
+vim.keymap.set('n', '<leader>pv', ':wincmd v<CR>:Ex<CR>:vertical resize 30<CR>', { desc = 'Create netrw listing pane' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
